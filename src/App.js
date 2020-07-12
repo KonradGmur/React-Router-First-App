@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
 // import './App.css';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+
+const Home = () => {
+  return (
+    <h1>Strona startowa</h1>
+  );
+}
+const News = () => <h1>Aktualności</h1>;
+const Contact = () => <h1>Kontakt do nas</h1>;
+
+
 
 class App extends Component {
   state = {}
   render() {
     return (
-      <BrowserRouter>
+      <Router>
         <div>
           <header>
             <nav>
@@ -18,10 +28,12 @@ class App extends Component {
             </nav>
           </header>
           <section>
-            Strona-witaj
-        </section>
+            <Route path="/" exact component={Home} />
+            <Route path="/news" component={News} />
+            <Route path="/contact" component={Contact} />
+          </section>
         </div>
-      </BrowserRouter>
+      </Router>
     )
   }
 }
